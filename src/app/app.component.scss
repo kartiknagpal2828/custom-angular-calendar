@@ -1,0 +1,28 @@
+.container {
+  width: 400px;
+  height: 460px;
+}
+
+.mat-calendar-wrapper {
+  overflow-y: auto;
+}
+
+.calendar-wrapper {
+  max-width: 300px;
+  min-width: 200px;
+  border: 1px solid #e41c77;
+}
+
+.special-date {
+  background: orange;
+  border-radius: 100%;
+}
+
+.fixed-width {
+  width: 310px;
+}
+
+.text-header {
+  font-size: 15px;
+  font-weight: 600;
+}

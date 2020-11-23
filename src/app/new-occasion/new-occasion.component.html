@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Add Holiday</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="addHoliday">
+    <div fxLayout="column">
+      <mat-form-field fxFlex="100" appearance="outline">
+        <mat-label>Date (DD/MM/YYYY)</mat-label>
+        <input matInput formControlName="date" [value]="occasionDate" [readonly]="true" required />
+      </mat-form-field>
+
+      <mat-form-field fxFlex="100" appearance="outline">
+        <mat-label>Occasion</mat-label>
+        <input matInput formControlName="occassion" required />
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button
+    mat-flat-button
+    color="warn"
+    (click)="onNoClick()"
+    mat-dialog-close
+  >
+    Cancel
+  </button>
+  <button mat-flat-button color="accent" (click)="saveHoliday()">
+    Save
+  </button>
+</div>
