@@ -108,9 +108,11 @@ export class AppComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        let newOccasion = {} as Holiday;
-        newOccasion.date = result.date;
-        newOccasion.occassion = result.occassion;
+        const newOccasion: Holiday = {
+          date: result.date,
+          occassion: result.occassion,
+          dateMoment: moment(result.date)
+        };
         this.holidays.push(newOccasion);
       }
       this.getHolidays();
@@ -122,8 +124,8 @@ export class AppComponent implements OnInit {
    */
   removeHoliday() {
     const d = this.selectedDate;
-    const c = this.holidays.find((i) => i.date === d)?.date;
-    delete this.holidays[this.holidays.findIndex((item) => item.date == c)];
+    const index = this.holidays.findIndex((i) => i.date === d);
+    this.holidays.splice(index, 1);
     console.log(this.holidays);
     this.getHolidays();
   }
@@ -133,12 +135,12 @@ export class AppComponent implements OnInit {
    */
   getOccasion() {
     const d = this.selectedDate;
-    const c = this.holidays.find((i) => i.date === d)?.date;
-    if (c !== undefined) {
+    const index = this.holidays.findIndex((i) => i.date === d);
+    if (index > -1) {
       this.disableAddHolidays = true;
       this.disableRemoveHolidays = false;
       this.disableControl();
-      this.occasion = this.holidays.find((i) => i.date === c)?.occassion;
+      this.occasion = this.holidays[index].occassion;
     } else {
       this.disableRemoveHolidays = true;
       if (this.selectedDate) {
